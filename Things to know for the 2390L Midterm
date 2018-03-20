@@ -25,6 +25,10 @@ sudo rm = remove/ delete
 sudo cp = copy
 sudo mv = move
 
-7)
+7) What is sudo?
+- Super User Do. Gives the user the ability to take full control of their Linux system once.
+- Unlike root, Sudo only last for the command while Root is like god mode.
+
+8)
 
 

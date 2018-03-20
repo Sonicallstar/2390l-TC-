@@ -34,7 +34,31 @@ sudo mv = move
 -Checks if there are updates available for your system to download and install.
 -$ Sudo apt-get upgrade installs the new files it found in the upgrades.
 
-9)
+9) Type of text editors 
+-Vim 
+-Nano 
+-Emacs
+
+10) what is used to compile source code?
+-GCC is used to compile source code.
+
+11)What is wget and what does it do?
+- Gets a SPECFIC file from a SPECIFIC location
+- Only stores the file
+
+12)What is git clone and what does it do?
+- Gets a file from a only Github and stores it in a directory similar to the one provided
+on github.
+
+13)
+
+14)
+
+15) what is a shebang?
+- !#bin/bash
+
+16) How to use Permissions?
+- 755 is the code needed to use with chmod to give the program access. 
 
 
 

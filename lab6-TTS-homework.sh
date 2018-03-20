@@ -13,7 +13,3 @@ pico2wave -w TimeH-M.wav "$Get_current_time"
 #command for playing back the TTS audio file. This must show some variation from the one in class. 
 
 aplay TimeH-M.wav
-
-
-
-Suck a dick suck a dic, Eats balls suck a dick.

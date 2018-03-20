@@ -28,7 +28,13 @@ sudo mv = move
 7) What is sudo?
 - Super User Do. Gives the user the ability to take full control of their Linux system once.
 - Unlike root, Sudo only last for the command while Root is like god mode.
+- root mode can be achieved typing Sudo -i
 
-8)
+8) The purpose of $sudo apt-get update?
+-Checks if there are updates available for your system to download and install.
+-$ Sudo apt-get upgrade installs the new files it found in the upgrades.
+
+9)
+
 
 

@@ -1,0 +1,30 @@
+1) A small bit of the history of unix
+- Bell laboratories made an OS that has
+	.A Unified, hierarchical file system
+	.Assembly based language
+
+- Microsoft and MAC were dominant during Linux
+- Unix/Linux went on to be open source through GPL (General Public) license
+- 1991 Linus Torvals continued on Unix and it was tyhen called Linux under his name.
+
+2) whats a Kernal?
+-Talk to Hardware
+-Manages system
+-Is the first thing to start up on the computer.
+
+3) What can Linux be used for?
+-Linux can run on multiple devices
+-Can run on medical devices, home media, phones, watches, usually smaller simple stuff
+
+4) What is a terminal on Linux?
+
+5) How to compile in Terminal
+
+6) How to edit a text file?
+sudo rm = remove/ delete
+sudo cp = copy
+sudo mv = move
+
+7)
+
+

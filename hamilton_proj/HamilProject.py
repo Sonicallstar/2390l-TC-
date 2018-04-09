@@ -1,14 +1,14 @@
-#!/usr/bin/env python !/bin/bash
+#!/usr/bin/env python
 
 import RPi.GPIO as GPIO
 import bme680
 import time
 import os
-import subprocess
 from subprocess import call
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7,GPIO.OUT)
+
 sensor = bme680.BME680()
 x=0
 
@@ -19,59 +19,47 @@ sensor.select_gas_heater_profile(0)
 sensor.set_filter(bme680.FILTER_SIZE_3)
 sensor.set_gas_status(bme680.ENABLE_GAS_MEAS)
 
-print("\n\nPolling:")
-"""try:
-    while True:
-        if sensor.get_sensor_data():
-            output = "{0:.2f} C,{1:.2f} hPa,{2:.2f} %RH".format(sensor.data.temperature, sensor.data.pressure, sensor.data.humidity)
+print("\n\nGenerating Data:")
 
-            if sensor.data.heat_stable:
-                print("{0},{1} Ohms".format(output, sensor.data.gas_resistance))
-
-            else:
-                print(output)"""
 try:
 	while True:
-
-		if sensor.get_sensor_data():
-            		output = "{0:.2f} C,{1:.2f} hPa,{2:.2f} %RH".format(sensor.data.temperature, sensor.data.pressure, sensor.data.humidity)
-
-            		if sensor.data.heat_stable:
-                		print("{0},{1} Ohms".format(output, sensor.data.gas_resistance))
-
-            		else:
-                		print(output)
-
-
-
-
-
-		current_gas_qual = "The Gas quality sensor reads {0} Ohms".format(sensor.data.gas_resistance)
-		current_inside_temp = "The temperature is {0:.2f}C".format(sensor.data.temperature)
-		x=x+1	
-		#pico2wave -w Current_Inside_Values.wav "$current_inside_temp"
-		print (current_inside_temp)
-		GPIO.output(7,True)
 		time.sleep(1)
-		GPIO.output(7,False)
-		#os.system('sudo pico2wave -w TEST_1.wav "Is this thing working... I dont think it\'s working"')
-		#os.system('aplay TEST_1.wav')
-		#os.system('echo $current_inside_temp')
-	        #os.system('sudo pico2wave -w TEST_1.wav "The temperature is {0:.2f}C".format(sensor.data.temperature)')
-	        #os.system('aplay TEST_1.wav')
-		if (x>=30):
-			call(["pico2wave","-w","TEST_2.wav",current_gas_qual])
-			call(["aplay","TEST_2.wav"])
-			call(["pico2wave","-w","TEST_3.wav",current_inside_temp])
-                        call(["aplay","TEST_3.wav"])
-                        x=0
+		if sensor.get_sensor_data():
+			output = "{0:.2f} C,{1:.2f} hPa,{2:.2f} %RH".format(sensor.data.temperature, sensor.data.pressure, sensor.data.humidity)
 
-			x=0
-		#file = open("current_temp.txt","w")
-		#file.write(current_inside_temp)	
-		#file.close()
-		
+			if sensor.data.heat_stable:
+				print("{0},{1} Ohms".format(output, sensor.data.gas_resistance))
+
+			else:
+				print(output)
+
+
+		if (sensor.data.gas_resistance >= 110000):
+			current_gas_qual = "The air quality is Excellent, sensor reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+		if (sensor.data.gas_resistance >= 90000 and sensor.data.gas_resistance < 110000):
+			current_gas_qual = "The air quality is Great, sensor reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+		if (sensor.data.gas_resistance >= 70000 and sensor.data.gas_resistance < 90000):
+			current_gas_qual = "The air quality is OK, sensor reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+		if (sensor.data.gas_resistance >= 50000 and sensor.data.gas_resistance < 70000):
+			current_gas_qual = "The air quality is Poor, sensitive persons may suffer, sensor reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+		if (sensor.data.gas_resistance >= 30000 and sensor.data.gas_resistance < 50000):
+			current_gas_qual = "The air quality is Really bad, protection is advised or moving to fresh air. Sensor Reads reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+		if (sensor.data.gas_resistance < 30000):
+			current_gas_qual = "Dangerous air quality, wear heavy protection or move to outdoors. Sensor Reads reads {0} Kilo Ohms".format(sensor.data.gas_resistance / 1000)
+
+		current_inside_temp = "The surrounding temperature is {0:.2f}Degrees Fahrenheit".format((sensor.data.temperature * 1.8)+32+(-1))
+		x=x+1	
+		print (current_inside_temp)
 			
+		
+		if (x>=32):
+			GPIO.output(7,True)
+			call(["pico2wave","-w","Air_Quality.wav",current_gas_qual])
+			call(["aplay","Air_Quality.wav"])
+			call(["pico2wave","-w","Surrounding_Temp.wav",current_inside_temp])
+           		call(["aplay","Surrounding_Temp.wav"])
+            		x=0
+			GPIO.output(7,False)
 
 except KeyboardInterrupt:
     pass

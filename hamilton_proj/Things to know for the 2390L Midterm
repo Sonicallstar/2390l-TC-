@@ -1,0 +1,64 @@
+1) A small bit of the history of unix
+- Bell laboratories made an OS that has
+	.A Unified, hierarchical file system
+	.Assembly based language
+
+- Microsoft and MAC were dominant during Linux
+- Unix/Linux went on to be open source through GPL (General Public) license
+- 1991 Linus Torvals continued on Unix and it was tyhen called Linux under his name.
+
+2) whats a Kernal?
+-Talk to Hardware
+-Manages system
+-Is the first thing to start up on the computer.
+
+3) What can Linux be used for?
+-Linux can run on multiple devices
+-Can run on medical devices, home media, phones, watches, usually smaller simple stuff
+
+4) What is a terminal on Linux?
+
+5) How to compile in Terminal
+
+6) How to edit a text file?
+sudo rm = remove/ delete
+sudo cp = copy
+sudo mv = move
+
+7) What is sudo?
+- Super User Do. Gives the user the ability to take full control of their Linux system once.
+- Unlike root, Sudo only last for the command while Root is like god mode.
+- root mode can be achieved typing Sudo -i
+
+8) The purpose of $sudo apt-get update?
+-Checks if there are updates available for your system to download and install.
+-$ Sudo apt-get upgrade installs the new files it found in the upgrades.
+
+9) Type of text editors 
+-Vim 
+-Nano 
+-Emacs
+
+10) what is used to compile source code?
+-GCC is used to compile source code.
+
+11)What is wget and what does it do?
+- Gets a SPECFIC file from a SPECIFIC location
+- Only stores the file
+
+12)What is git clone and what does it do?
+- Gets a file from a only Github and stores it in a directory similar to the one provided
+on github.
+
+13)
+
+14)
+
+15) what is a shebang?
+- !#bin/bash
+
+16) How to use Permissions?
+- 755 is the code needed to use with chmod to give the program access. 
+
+
+

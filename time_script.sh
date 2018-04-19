@@ -14,6 +14,6 @@ do
         
 
 # Required step: Modify the sleep function to include 1, 5, and 20-second increments while showing console output for each of the different increments
-      	sleep 20
-	echo "20"
+      	sleep 5
+	echo "5"
 done
